@@ -51,6 +51,10 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-solr</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -61,6 +65,7 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 
 </project>
