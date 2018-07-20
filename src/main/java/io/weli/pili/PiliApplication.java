@@ -13,10 +13,11 @@ import java.util.Arrays;
 public class PiliApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(PiliApplication.class, args);
     }
 
-    @Bean
+//    @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
         return args -> {
 
