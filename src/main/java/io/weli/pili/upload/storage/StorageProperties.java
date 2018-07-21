@@ -1,8 +1,10 @@
 package io.weli.pili.upload.storage;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
-@ConfigurationProperties("storage")
+@Configuration
+@ConfigurationProperties
 public class StorageProperties {
 
     /**
