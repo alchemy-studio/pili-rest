@@ -1,4 +1,4 @@
-package io.weli.pili;
+package io.weli.pili.cleanup;
 
 public class Greeting {
     private final long id;

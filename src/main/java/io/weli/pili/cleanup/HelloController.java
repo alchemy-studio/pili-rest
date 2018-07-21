@@ -1,4 +1,4 @@
-package io.weli.pili;
+package io.weli.pili.cleanup;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
