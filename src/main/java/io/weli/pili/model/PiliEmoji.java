@@ -1,4 +1,4 @@
-package io.weli.pili;
+package io.weli.pili.model;
 
 import org.apache.solr.client.solrj.beans.Field;
 import org.springframework.data.annotation.Id;
