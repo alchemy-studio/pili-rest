@@ -3,6 +3,8 @@ package io.weli.pili.upload;
 import java.io.IOException;
 import java.util.stream.Collectors;
 
+import io.weli.pili.search.PiliEmoji;
+import io.weli.pili.search.PiliEmojiRepo;
 import io.weli.pili.upload.storage.StorageFileNotFoundException;
 import io.weli.pili.upload.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class FileUploadController {
 
     private final StorageService storageService;
+
+    @Autowired
+    private PiliEmojiRepo repo;
 
     @Autowired
     public FileUploadController(StorageService storageService) {
@@ -58,6 +63,9 @@ public class FileUploadController {
                                    RedirectAttributes redirectAttributes) {
 
         storageService.store(file);
+        repo.save(new PiliEmoji(file.getName(), storageService.load(file.getName()).toString()));
+
+
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
 

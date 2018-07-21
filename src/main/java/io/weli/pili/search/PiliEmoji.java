@@ -11,9 +11,13 @@ public class PiliEmoji {
     private String id;
 
     @Field
-    private String label;
+    private String name;
 
     @Field
     private String location;
 
+    public PiliEmoji(String name, String location) {
+        this.name = name;
+        this.location = location;
+    }
 }
