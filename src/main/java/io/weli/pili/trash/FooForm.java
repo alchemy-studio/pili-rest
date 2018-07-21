@@ -1,4 +1,4 @@
-package io.weli.pili.cleanup;
+package io.weli.pili.trash;
 
 public class FooForm {
     private long id;

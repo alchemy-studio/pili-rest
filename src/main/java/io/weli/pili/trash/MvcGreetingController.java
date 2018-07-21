@@ -1,4 +1,4 @@
-package io.weli.pili.cleanup;
+package io.weli.pili.trash;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
