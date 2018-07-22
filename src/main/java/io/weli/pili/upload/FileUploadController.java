@@ -63,7 +63,7 @@ public class FileUploadController {
                                    RedirectAttributes redirectAttributes) {
 
         storageService.store(file);
-        repo.save(new PiliEmoji(file.getName(), storageService.load(file.getName()).toString()));
+        repo.save(new PiliEmoji(file.getOriginalFilename(), storageService.load(file.getOriginalFilename()).toString()));
 
 
         redirectAttributes.addFlashAttribute("message",
