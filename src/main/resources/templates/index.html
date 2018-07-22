@@ -21,8 +21,8 @@
 
 <div>
     <ul>
-        <li th:each="file : ${files}">
-            <a th:href="${file}" th:text="${file}"/>
+        <li th:each="result : ${results}">
+            <p th:text="${result.location}"></p>
         </li>
     </ul>
 </div>

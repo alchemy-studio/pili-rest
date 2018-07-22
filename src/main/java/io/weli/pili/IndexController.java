@@ -26,19 +26,10 @@ public class IndexController {
     Pageable pageable = PageRequest.of(0, 3);
 
     @GetMapping("/")
-    public String search(@RequestParam(value = "keyword", defaultValue = "爱") String keyword, Model model) {
+    public String search(@RequestParam(value = "keyword", defaultValue = "*") String keyword, Model model) {
         model.addAttribute("message", keyword);
-
-
-
-        System.out.println("::: " + repo.findAllByName(keyword));
-
+        model.addAttribute("results", repo.findAllByName(keyword));
         return "index";
     }
 
-//    @GetMapping("/{keyword:.+}")
-//    public String handleQuery(@RequestParam("keyword") String keyword) {
-//        repo.query(keyword, pageable);
-//        return "index";
-//    }
 }

@@ -1,6 +1,7 @@
 package io.weli.pili.upload;
 
 import java.io.IOException;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import com.github.houbb.opencc4j.util.ZhConverterUtil;
@@ -63,7 +64,10 @@ public class FileUploadController {
                                    RedirectAttributes redirectAttributes) {
 
         storageService.store(file);
-        repo.save(new PiliEmoji(ZhConverterUtil.convertToSimple(file.getOriginalFilename()),
+//        repo.deleteAll();
+        repo.save(
+                new PiliEmoji(UUID.randomUUID().toString(),
+                        ZhConverterUtil.convertToSimple(file.getOriginalFilename()),
                 storageService.load(file.getOriginalFilename()).toString()));
 
 
