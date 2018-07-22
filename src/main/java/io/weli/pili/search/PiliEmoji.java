@@ -20,4 +20,6 @@ public class PiliEmoji {
         this.name = name;
         this.location = location;
     }
+
+
 }
