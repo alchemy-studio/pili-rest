@@ -3,6 +3,7 @@ package io.weli.pili.upload;
 import java.io.IOException;
 import java.util.stream.Collectors;
 
+import com.github.houbb.opencc4j.util.ZhConverterUtil;
 import io.weli.pili.search.PiliEmoji;
 import io.weli.pili.search.PiliEmojiRepo;
 import io.weli.pili.upload.storage.StorageFileNotFoundException;
@@ -22,7 +23,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 
 
 @Controller
@@ -63,7 +63,8 @@ public class FileUploadController {
                                    RedirectAttributes redirectAttributes) {
 
         storageService.store(file);
-        repo.save(new PiliEmoji(file.getName(), storageService.load(file.getName()).toString()));
+        repo.save(new PiliEmoji(ZhConverterUtil.convertToSimple(file.getOriginalFilename()),
+                storageService.load(file.getOriginalFilename()).toString()));
 
 
         redirectAttributes.addFlashAttribute("message",
