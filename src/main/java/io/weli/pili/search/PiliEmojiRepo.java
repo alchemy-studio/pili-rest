@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface PiliEmojiRepo extends SolrCrudRepository<PiliEmoji, String> {
 
-    @Query("name:*?0*")
+    @Query("name:?0")
     List<PiliEmoji> findAllByName(String keyword);
 }
 
