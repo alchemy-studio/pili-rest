@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import java.util.Arrays;
+import java.util.Properties;
 
 // $ mvn spring-boot:run
 @SpringBootApplication
@@ -14,7 +15,18 @@ public class PiliApplication {
 
     public static void main(String[] args) {
 
-        SpringApplication.run(PiliApplication.class, args);
+        SpringApplication app =
+                new SpringApplication(PiliApplication.class);
+
+//        SpringApplication.run(PiliApplication.class, args);
+
+        Properties properties = new Properties();
+//        properties.setProperty("spring.resources.static-locations",
+//                "/tmp/pili/");
+        app.setDefaultProperties(properties);
+
+        app.run(args);
+
     }
 
 //    @Bean

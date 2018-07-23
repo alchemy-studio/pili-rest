@@ -50,25 +50,28 @@ public class FileUploadController {
         return "uploadForm";
     }
 
-//    @GetMapping("/files/{filename:.+}")
-//    @ResponseBody
-//    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
-//
-//        Resource file = storageService.loadAsResource(filename);
-//        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-//                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
-//    }
+    @GetMapping("/files/{filename:.+}")
+    @ResponseBody
+    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
+
+        Resource file = storageService.loadAsResource(filename);
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+    }
 
     @PostMapping("/upload")
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes) {
 
-        storageService.store(file);
+        String unifiedFilename = UUID.randomUUID().toString();
+//        storageService.store(file, unifiedFilename);
 //        repo.deleteAll();
+
+        storageService.store(file);
         repo.save(
-                new PiliEmoji(UUID.randomUUID().toString(),
+                new PiliEmoji(unifiedFilename,
                         ZhConverterUtil.convertToSimple(file.getOriginalFilename()),
-                storageService.load(file.getOriginalFilename()).toString()));
+                        file.getOriginalFilename()));
 
 
         redirectAttributes.addFlashAttribute("message",
