@@ -22,7 +22,8 @@
 <div>
     <ul>
         <li th:each="result : ${results}">
-            <p th:text="${result.location}"></p>
+            <!--<img src="" th:src="'file://' + ${result.location}"/>-->
+            <p th:text="${result.location}">&nbsp;</p>
         </li>
     </ul>
 </div>
