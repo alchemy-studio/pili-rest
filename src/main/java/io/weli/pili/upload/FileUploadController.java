@@ -63,13 +63,13 @@ public class FileUploadController {
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes) {
 
-        String unifiedFilename = UUID.randomUUID().toString();
+        String id = UUID.randomUUID().toString();
 //        storageService.store(file, unifiedFilename);
 //        repo.deleteAll();
 
         storageService.store(file);
         repo.save(
-                new PiliEmoji(unifiedFilename,
+                new PiliEmoji(id,
                         ZhConverterUtil.convertToSimple(file.getOriginalFilename()),
                         file.getOriginalFilename()));
 
